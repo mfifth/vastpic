@@ -1,0 +1,52 @@
+.headerbrand {
+	background: url("https://hd.unsplash.com/photo-1450800686410-40650cc65cc3") no-repeat center fixed;
+	background-size: cover;
+	background-origin: inherit;
+	width: 100%;
+	height: 100vh;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.landing-navbar ul {
+	list-style: none;
+	padding-bottom: 40px;
+}
+
+.landing-navbar ul li {
+	display: inline;
+}
+
+.landing-navbar a {
+	color: #f35357;
+	padding: 20px;
+	text-decoration: none;
+	font-family: 'Lato', sans-serif;
+	line-height: 50px;
+}
+
+.landing-navbar a:hover {
+	color: white;
+	background-color: #f35357;
+}
+
+.first-half {
+	float: left;
+}
+.last-part {
+	float: right;
+}
+
+.main-content {
+	clear: both;
+	display: flex;
+	background-color: #f3f3f3;
+	justify-content: center;
+}
+
+.main-content h1 {
+	color: #7f8c8d;
+	margin-bottom: 20px;
+}

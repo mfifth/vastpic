@@ -1,0 +1,24 @@
+development:
+  adapter: postgresql
+  encoding: SQL_ASCII
+  database: vastpic
+  host: localhost
+  username: matt
+  password: pa55w0rd
+  pool: 5
+  timeout: 5000
+
+test:
+  adapter: postgresql
+  encoding: SQL_ASCII
+  database: vastpic
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: postgresql
+  encoding: SQL_ASCII
+  database: vastpic
+  pool: 5
+  timeout: 5000
+  database: db/production.sqlite3
