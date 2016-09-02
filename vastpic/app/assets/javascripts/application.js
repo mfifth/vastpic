@@ -12,5 +12,32 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+// require turbolinks
 //= require_tree .
+
+var main;
+main = function() {
+	var current_page = window.location.pathname;
+	var banner = $('.headerbrand');
+	var nav = $('.navbar');
+			
+	if(current_page != '/') {
+		banner.hide();
+		nav.addClass('fixed');
+		$('body').css('padding-top', 80);
+	}
+
+	if(current_page == '/') {
+		document.querySelector('.headerbrand').style.backgroundImage = `url('${ gon.img }')`;
+		$(window).scroll(function() {
+			if($(this).scrollTop() > 650 ) {
+				nav.addClass('fixed');
+			}
+			else {
+				nav.removeClass('fixed');
+			}
+		});
+	}
+};
+
+$(document).ready(main);

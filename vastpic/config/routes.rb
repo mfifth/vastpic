@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'portfolios#index'
-  resources :portfolios, only: [:index, :new, :create, :destroy]
-  # The priority is based upon order of creation: first created -> highest priority.
+  root 'pictures#index'
+  get '/license', to: 'pictures#license'
+
+  resources :users, only: [:show, :edit, :update]
+  resources :pictures
+    # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
