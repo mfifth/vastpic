@@ -9,7 +9,7 @@
 
 		The photo must be your own original content.
 	</p>
-	<%= simple_form_for(@picture) do |f| %>
+	<%= simple_form_for @picture, html: { multipart: true, class: "foobar"} do |f| %>
 		<%= f.input :image_url, label: "Image", as: :file %>
 
 		<%= f.button :submit, "Submit", class: "btn btn-primary" %>

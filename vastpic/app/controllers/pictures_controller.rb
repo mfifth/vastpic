@@ -17,9 +17,10 @@ class PicturesController < ApplicationController
 		@picture.user = current_user
 
 		if @picture.save
-			flash[:success] = "Photo has been uploaded successfully."
+			render json: { message: "success", fileID: @picture.id }, :status => 200
 			redirect_to user_path(current_user)
 		else
+			render json: { error: @picture.errors.full_messages.join(',')}, :status => 400
 			flash.now[:alert] = "Photo was not uploaded."
 			render 'new'
 		end

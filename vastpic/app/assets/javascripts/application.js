@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require dropzone
 //= require jquery
 //= require jquery_ujs
 // require turbolinks
@@ -20,7 +21,7 @@ main = function() {
 	var current_page = window.location.pathname;
 	var banner = $('.headerbrand');
 	var nav = $('.navbar');
-			
+							
 	if(current_page != '/') {
 		banner.hide();
 		nav.addClass('fixed');
@@ -29,6 +30,7 @@ main = function() {
 
 	if(current_page == '/') {
 		document.querySelector('.headerbrand').style.backgroundImage = `url('${ gon.img }')`;
+		
 		$(window).scroll(function() {
 			if($(this).scrollTop() > 650 ) {
 				nav.addClass('fixed');

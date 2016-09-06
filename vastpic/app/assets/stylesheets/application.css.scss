@@ -22,8 +22,8 @@ body {
 }
 
 .btn-primary:hover {
-	background-color: white;
-	color: #f35357;
+	background-color: none;
+	border: none;
 }
 
 .fixed {
@@ -60,4 +60,114 @@ body {
 .welcomemsg {
 	color: #f35357;
 	line-height: 50px;
+}
+
+.multi {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.single {
+	width: 98%;
+	margin-left: auto;
+	margin-right: auto;
+	clear: both;
+	margin-bottom: 30px;
+}
+
+ .fullimg {
+	width: 100%;
+	margin-top: 30px;
+}
+
+.multiimg {
+	margin-top: 30px;
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 40%;
+	height: 40%;
+	flex-grow: 1;
+}
+
+.optionsnavi {
+	list-style: none;
+	padding: 0px;
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.optionsnavi li {
+	display: inline-block;
+	width: 33%;
+}
+
+.dropdown {
+	text-align: center;
+	padding-left: 40px;
+}
+
+.dropbtn:focus ~ .dropdown-content {
+	display: block;
+	border: 0px;
+}
+
+.dropdown-content {
+	max-height: 0px;
+	display: none;
+	position: absolute;
+	margin-left: 80px;
+}
+
+.dropdown-content a {
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	background-color: #f3f3f3;
+	margin-left: 60px;
+}
+
+.dropdown-content a:hover {
+	background-color: #f1f1f1;
+	color: #f35357;
+}
+
+.dropbtn {
+	background-color: inherit;
+	border: 0px;
+	padding: 10px;
+}
+
+.dropbtn:hover {
+	color: #f35357;
+}
+
+.sizetoggle {
+	text-align: right;
+}
+
+.active {
+	color: black;
+}
+
+.inactive {
+	color: gray;
+}
+
+.single-img {
+	border: 0px;
+	background-color: #f3f3f3;
+}
+
+.multi-img {
+	border: 0px;
+	background-color: #f3f3f3;
+}
+
+.fa-bars.fa-2x {
+	margin-right: 10px;
 }
