@@ -1,0 +1,17 @@
+<div class='submit-brand'>
+	<%= link_to image_tag("http://goo.gl/hqYEue"), root_path %>
+	<p>
+		Your photo will be published on our website as soon as our teams reviews it for submission.
+		After uploading your photo will be licensed under Creative Commons License (Creative Commons Zero CCO 1.0).
+
+		<br>
+		<br>
+
+		The photo must be your own original content.
+	</p>
+	<%= simple_form_for @picture, html: { multipart: true, class: "foobar"} do |f| %>
+		<%= f.input :image_url, label: "Image", as: :file %>
+
+		<%= f.button :submit, "Submit", class: "btn btn-primary" %>
+	<% end %>
+</div>
