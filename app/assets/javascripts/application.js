@@ -29,7 +29,7 @@ main = function() {
 	}
 
 	if(current_page == '/') {
-		document.querySelector('.headerbrand').style.backgroundImage = `url('${ gon.img }')`;
+		document.querySelector('.headerbrand').style.backgroundImage = 'url(' + gon.img + ')';
 		
 		$(window).scroll(function() {
 			if($(this).scrollTop() > 650 ) {

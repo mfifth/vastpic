@@ -31,6 +31,8 @@ gem 'dropzonejs-rails'
 
 gem 'rails_12factor', group: :production
 
+gem 'capistrano'
+
 # gem 'compass-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
