@@ -5,6 +5,5 @@ CarrierWave.configure do |config|
 	  aws_secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),                     # required
 	  region: ENV.fetch('AWS_REGION')                 # optional, defaults to 'us-east-1'
 	}
-	 config.fog_directory  = ENV.fetch('S3_BUCKET_NAME')  
-	 config.s3_access_policy = :public_read
+	config.fog_directory  = ENV.fetch('S3_BUCKET_NAME')  
 end
