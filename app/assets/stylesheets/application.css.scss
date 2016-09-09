@@ -34,16 +34,47 @@ body {
 	padding: 0px;
 }
 
-.navbar {
-	background-color: white;
+.navbar-default .navbar-brand {
+	color: #f35357;
+}
+
+.navbar ul li:hover {
+	background-color: #f35357;
+	color: white!important;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+	color: white;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+	color: #f35357;
+}
+
+.nav > li > a > img {
+	width: 40px;
+}
+
+.thumb {
+	padding-top: 5px !important;
+	padding-left: 5px !important;
+	padding-bottom: 5px !important;
+	padding-right: 15px !important;
+}
+
+.thumb:hover {
+	background-color: white !important;
 }
 
 .navbar-right {
 	margin-right: 0px;
 }
 
-.navbar li a {
+.navbar-default .navbar-nav > li > a {
 	color: #f35357;
+	font-family: Lato;
+	font-weight: 400;
+	letter-spacing: 1px;
 }
 
 .navbar li a:hover {
@@ -62,15 +93,22 @@ body {
 	line-height: 50px;
 }
 
+.photo_section {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .multi {
-	width: 100%;
 	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 	flex-wrap: wrap;
-	justify-content: center;
+	margin-top: 70px;
 }
 
 .single {
-	width: 98%;
+	width: 95%;
 	margin-left: auto;
 	margin-right: auto;
 	clear: both;
@@ -83,44 +121,46 @@ body {
 }
 
 .multiimg {
-	margin-top: 30px;
-	margin-left: 10px;
-	margin-right: 10px;
-	width: 40%;
-	height: 40%;
-	flex-grow: 1;
+	width: 100%;
+}
+
+.grid {
+	width: 32%;
 }
 
 .optionsnavi {
 	list-style: none;
 	padding: 0px;
-	width: 95%;
+	width: 70%;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 40px;
 	margin-bottom: 40px;
 }
 
-.optionsnavi li {
+.full-size {
 	display: inline-block;
 	width: 33%;
 }
 
-.dropdown {
-	text-align: center;
-	padding-left: 40px;
+.half-size {
+	display: inline-block;
+	width: 45%;
+	padding: 0px;
 }
 
-.dropbtn:focus ~ .dropdown-content {
+.showdrop {
 	display: block;
-	border: 0px;
 }
 
 .dropdown-content {
-	max-height: 0px;
 	display: none;
 	position: absolute;
-	margin-left: 80px;
+	padding: 0px;
+}
+
+.dropdown {
+	position: static;
 }
 
 .dropdown-content a {
@@ -128,7 +168,6 @@ body {
 	text-decoration: none;
 	display: block;
 	background-color: #f3f3f3;
-	margin-left: 60px;
 }
 
 .dropdown-content a:hover {
@@ -170,4 +209,21 @@ body {
 
 .fa-bars.fa-2x {
 	margin-right: 10px;
+}
+
+.aboutsection {
+	margin-top: 10px;
+	color: #7f8c8d;
+	font-family: 'Lato', sans-serif;
+	font-size: 18px;
+	order: 2;
+}
+
+.aboutsection a {
+	color: #f35357;
+	text-decoration: none;
+}
+
+.aboutsection a:hover {
+	color: #7f8c8d;
 }

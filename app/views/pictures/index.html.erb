@@ -6,10 +6,10 @@
 		<button class='dropbtn'>
 			Sort By <i class="fa fa-sort-desc" aria-hidden="true"></i>
 		</button>
-		<div id='myDropdown' class='dropdown-content'>
-			<%= link_to "Latest", :sort => "created_at asc" %>
-			<%= link_to "Oldest", :sort => "created_at desc" %>
-		</div>
+			<div id='myDropdown' class='dropdown-content'>
+				<%= link_to "Latest", :sort => "created_at asc" %>
+				<%= link_to "Oldest", :sort => "created_at desc" %>
+			</div>
 	</li>
 	<li class='sizetoggle'>
 		<button type='button' class='single-img'>
@@ -23,6 +23,12 @@
 	
 <div class='photo_section single'>
 	<% @pictures.each do |picture| %>
-		<%= image_tag picture.image_url.url, class: "fullimg" %>
+		<div class='imageauthor'>
+			<%= image_tag picture.image_url.url, class: "fullimg" %>
+			<p class='aboutsection'>
+				Photo by <%= link_to "#{picture.user.first_name} #{picture.user.last_name}", 
+				user_path(picture.user) %> / <%= link_to "Download", root_path %>
+			</p>
+		</div>
 	<% end %>
 </div>

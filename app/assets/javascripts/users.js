@@ -3,11 +3,13 @@ main = function() {
 	var bar = $('.fa-bars'),
 	grid = $('.fa-th-large'),
 	photos = $('.photo_section'),
+	flexitem = $('.imageauthor'),
 	img = $('img').filter('.fullimg');
 
 	$('button.multi-img').click(function() {
 		photos.removeClass('single');
 		photos.addClass('multi');
+		flexitem.addClass('grid');
 
 		grid.removeClass('inactive');
 		grid.addClass('active');
@@ -21,6 +23,7 @@ main = function() {
 	$('button.single-img').click(function() {
 		photos.removeClass('multi');
 		photos.addClass('single');
+		flexitem.removeClass('grid');
 
 
 		bar.removeClass('inactive');

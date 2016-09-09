@@ -13,6 +13,10 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'devise'
 
+gem 'figaro'
+
+gem 'mini_magick'
+
 gem 'autoprefixer-rails'
 
 gem 'font-awesome-rails'
@@ -29,9 +33,9 @@ gem 'gon'
 
 gem 'dropzonejs-rails'
 
-gem 'rails_12factor', group: :production
+# gem 'rails_12factor', group: :production
 
-gem 'capistrano'
+# gem 'capistrano'
 
 gem 'aws-sdk'
 

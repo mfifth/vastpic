@@ -13,23 +13,30 @@
 //= require dropzone
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
 // require turbolinks
 //= require_tree .
 
 var main;
 main = function() {
 	var current_page = window.location.pathname;
+	var options = $('.optionsnavi li');
 	var banner = $('.headerbrand');
 	var nav = $('.navbar');
+	var dropnavbtn = $('.dropbtn');
 							
 	if(current_page != '/') {
 		banner.hide();
 		nav.addClass('fixed');
+		options.addClass('full-size');
+		$('.optionsnavi').css('width', '95%');
+		$('.dropdown').css('padding-left', '15%');
 		$('body').css('padding-top', 80);
 	}
 
 	if(current_page == '/') {
 		document.querySelector('.headerbrand').style.backgroundImage = 'url(' + gon.img + ')';
+		options.addClass('half-size');
 		
 		$(window).scroll(function() {
 			if($(this).scrollTop() > 650 ) {
@@ -40,6 +47,10 @@ main = function() {
 			}
 		});
 	}
+	
+	dropnavbtn.click(function () {
+		$('.dropdown-content').toggle();
+	});
 };
 
 $(document).ready(main);
