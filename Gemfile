@@ -13,9 +13,13 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'devise'
 
+gem 'jcrop-rails-v2'
+
 gem 'figaro'
 
 gem 'mini_magick'
+
+gem 'rmagick'
 
 gem 'autoprefixer-rails'
 
@@ -24,6 +28,8 @@ gem 'font-awesome-rails'
 gem 'bootstrap-sass'
 
 gem 'simple_form'
+
+# gem 'carrierwave-crop'
 
 gem 'pry'
 

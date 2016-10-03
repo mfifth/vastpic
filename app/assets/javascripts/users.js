@@ -34,6 +34,20 @@ main = function() {
 		img.removeClass('multiimg');
 		img.addClass('fullimg');
 	});
+	
+	$('#cropbox').Jcrop({
+		onChange: update_crop,
+		onSelect: update_crop,
+		setSelect: [0, 0, 200, 200],
+		aspectRatio: 1
+	});
+	
+	function update_crop(coords) {
+		$("#user_crop_x").val(coords.x);
+		$("#user_crop_y").val(coords.y);
+		$("#user_crop_w").val(coords.w);
+		$("#user_crop_h").val(coords.h);
+	}
 };
 
 $(document).ready(main);

@@ -1,6 +1,6 @@
 <div class='profile-header'>
 	<ul>
-		<li><%= image_tag @user.avatar.url %>
+		<li><%= image_tag @user.avatar.medium.url, class: "avatarimg" %>
 		<li><%= "#{@user.first_name} #{@user.last_name}" %></li>
 		<li><%= @user.location %></li>
 		<li><%= @user.about %></li>

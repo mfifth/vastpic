@@ -31,11 +31,14 @@
       <ul class="nav navbar-nav">
         <li><%= link_to "Submit", new_picture_path(@picture) %></li>
         <li><%= link_to "License", license_path %></li>
+        <% admins_only do %>
+          <li><%= link_to "Admin", admin_root_path %></li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       	<% if user_signed_in? %>
       		<li><%= link_to image_tag(current_user.avatar.thumb.url), user_path(current_user), class: "thumb" %></li>
-      		<li><%= link_to "Sign out", destroy_user_session_path %></li>
+      		<li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
       	<% else %>
       		<li><%= link_to "Log in", new_user_session_path %></li>
       		<li><%= link_to "Sign up", new_user_registration_path %></li>

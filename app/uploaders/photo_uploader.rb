@@ -3,8 +3,8 @@
 class PhotoUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
+  include CarrierWave::RMagick
+  # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
@@ -25,11 +25,34 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   # Process files as they are uploaded:
-  process resize_to_fit: [800, 800]
-
+  process resize_to_limit: [800, 800]
+  
+  def crop
+    if model.crop_x.present?
+      resize_to_limit(600, 600)
+      manipulate! do |img|
+        x = model.crop_x.to_i
+        y = model.crop_y.to_i
+        w = model.crop_w.to_i
+        h = model.crop_h.to_i
+        img.crop!(x, y, w, h)
+      end
+    end
+  end
+  
   # Create different versions of your uploaded files:
   version :thumb do
-    process :resize_to_fill => [50, 50]
+    process :crop
+    resize_to_fill(100, 100)
+    def default_url
+      "/images/fallback/noimage.jpg"
+    end
+  end
+  
+  version :medium do
+    process :crop
+    resize_to_limit(250, 250)
+    
     def default_url
       "/images/fallback/noimage.jpg"
     end
@@ -46,5 +69,4 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end

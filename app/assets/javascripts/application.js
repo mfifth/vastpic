@@ -12,6 +12,7 @@
 //
 //= require dropzone
 //= require jquery
+//= require jquery.Jcrop
 //= require jquery_ujs
 //= require bootstrap-sprockets
 // require turbolinks
@@ -24,6 +25,7 @@ main = function() {
 	var banner = $('.headerbrand');
 	var nav = $('.navbar');
 	var dropnavbtn = $('.dropbtn');
+	var likebtn = $('.likethisphoto');
 							
 	if(current_page != '/') {
 		banner.hide();
@@ -50,6 +52,10 @@ main = function() {
 	
 	dropnavbtn.click(function () {
 		$('.dropdown-content').toggle();
+	});
+	
+	likebtn.click(function () {
+		$(this).toggleClass('clicked');
 	});
 };
 
