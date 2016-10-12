@@ -23,26 +23,6 @@
 	
 <div class='photo_section single'>
 	<% @pictures.each do |picture| %>
-		<div class='imageauthor'>
-			<%= image_tag picture.image_url.url, class: "fullimg" %>
-			<ul class='aboutsection'>
-				<li>Photo by <%= link_to "#{picture.user.first_name} #{picture.user.last_name}", 
-					user_path(picture.user) %> / <%= link_to "Download", root_path %>
-					<span class= "likefunction">
-						<% if picture.likes.where(user: current_user).any? %>
-							<%= button_to picture_like_path(picture.likes.where(user: current_user), picture.id), method: :delete, remote: true, class: "likethisphoto" do %>
-								<%= picture.likes.count %>
-								<i class="fa fa-heart-o" aria-hidden="true"></i>
-							<% end %>
-						<% else %>
-							<%= button_to picture_likes_path(picture), remote: true, class: "likethisphoto" do %>
-								<%= picture.likes.count %>
-								<i class="fa fa-heart-o" aria-hidden="true"></i>
-							<% end %>
-						<% end %>
-					</span>
-				</li>
-			</p>
-		</div>
+		<%= render partial: 'picture', locals: {picture: picture} %>
 	<% end %>
 </div>

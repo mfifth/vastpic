@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update]
   resources :pictures do 
-    resources :likes, only: [:create, :destroy]
+    member do
+      put "like" => "pictures#upvote"
+      delete "unlike" => "pictures#unvote"
+      patch 'set_featured' => 'pictures#featured'
+    end
   end
 end

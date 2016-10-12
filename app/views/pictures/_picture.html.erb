@@ -1,0 +1,29 @@
+<div class='imageauthor'>
+	<%= image_tag picture.image_url.url, class: "fullimg" %>
+	<ul class='aboutsection'>
+		<li>Photo by <%= link_to "#{picture.user.first_name} #{picture.user.last_name}", 
+			user_path(picture.user) %> / <%= link_to "Download", root_path %>
+			<% if current_user.try(:admin?) || picture.user == current_user %> /
+				<%= link_to "Delete", picture_path(picture), method: :delete, data: {confirm: "Are you sure you want to delete this photo?"} %>
+			<% end %>
+			<% admins_only do %>
+				<%= button_to set_featured_picture_path(picture), class: "likethisphoto" do %>
+					<i class="fa fa-check" aria-hidden="true"></i>
+				<% end %>
+			<% end %>
+			<span class= "likefunction" id="picture_<%= picture.id %>">
+				<% if user_signed_in? && current_user.voted_for?(picture) %>
+					<%= button_to unlike_picture_path(picture), method: :delete, remote: true, class: "likethisphoto" do %>
+						<span class='likescount'><%= picture.get_likes.count %></span>
+						<i class="fa fa-heart-o" aria-hidden="true"></i>
+					<% end %>
+				<% else %>
+					<%= button_to like_picture_path(picture), method: :put, remote: true, class: "likethisphoto" do %>
+						<span class='likescount'><%= picture.get_likes.count %></span>
+						<i class="fa fa-heart-o" aria-hidden="true"></i>
+					<% end %>
+				<% end %>
+			</span>
+		</li>
+	</p>
+</div>

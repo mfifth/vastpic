@@ -32,12 +32,6 @@
 
 <div class='photo_section single'>
 	<% @pictures.each do |picture| %>
-		<div class='imageauthor'>
-			<%= image_tag picture.image_url.url, class: "fullimg" %>
-			<p class='aboutsection'>
-				Photo by <%= link_to "#{picture.user.first_name} #{picture.user.last_name}", 
-				user_path(picture.user) %> / <%= link_to "Download", root_path %>
-			</p>
-		</div>
+		<%= render partial: 'picture', locals: {picture: picture} %>
 	<% end %>
 </div>

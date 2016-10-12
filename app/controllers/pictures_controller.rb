@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-	before_action :authenticate_user!, only: [:new]
+	before_action :authenticate_user!, only: [:new, :upvote, :unvote]
 
 	def index
 		@pictures = Picture.where(featured: true)
@@ -32,14 +32,38 @@ class PicturesController < ApplicationController
 	def license
 		
 	end
+	
+	def set_featured
+		@picture = Picture.find(params[:id])
+		@picture.featured = true
+		
+		flash[:notice] = "Picture has been set to featured."
+		redirect_to root_path
+	end
+	
+	def upvote
+		@picture = Picture.find(params[:id])
+		@picture.liked_by(current_user)
+		
+		respond_to do |format|
+			format.html {redirect_to root_path}
+			format.js
+		end
+	end
+	
+	def unvote
+		@picture = Picture.find(params[:id])
+		@picture.unliked_by(current_user)
+		
+		respond_to do |format|
+			format.html {redirect_to root_path}
+			format.js
+		end
+	end
 
 	private
 
 	def picture_params
 		params.require(:picture).permit(:user, :image_url)
-	end
-	
-	def liked_by?(user)
-		self.likes.where(user: current_user).any?
 	end
 end
