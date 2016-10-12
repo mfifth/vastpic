@@ -6,8 +6,9 @@
 			<% if current_user.try(:admin?) || picture.user == current_user %> /
 				<%= link_to "Delete", picture_path(picture), method: :delete, data: {confirm: "Are you sure you want to delete this photo?"} %>
 			<% end %>
-			<% admins_only do %>
-				<%= button_to set_featured_picture_path(picture), class: "likethisphoto" do %>
+			<% admins_only do %> /
+				<%= link_to set_featured_picture_path(picture), method: :patch,
+				data: {confirm: "Are you sure you want to make this photo featured?"} do %>
 					<i class="fa fa-check" aria-hidden="true"></i>
 				<% end %>
 			<% end %>

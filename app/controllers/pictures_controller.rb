@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
 	before_action :authenticate_user!, only: [:new, :upvote, :unvote]
+	
 
 	def index
 		@pictures = Picture.where(featured: true)
@@ -33,9 +34,10 @@ class PicturesController < ApplicationController
 		
 	end
 	
-	def set_featured
+	def featured
 		@picture = Picture.find(params[:id])
 		@picture.featured = true
+		@picture.save
 		
 		flash[:notice] = "Picture has been set to featured."
 		redirect_to root_path
@@ -65,5 +67,9 @@ class PicturesController < ApplicationController
 
 	def picture_params
 		params.require(:picture).permit(:user, :image_url)
+	end
+	
+	def verify_admin
+		current_user.try(:admin?)
 	end
 end
