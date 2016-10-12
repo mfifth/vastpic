@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
 	before_action :authenticate_user!, only: [:new, :upvote, :unvote]
+	before_action :verify_admin, only: [:featured]
 	
 
 	def index
@@ -70,6 +71,9 @@ class PicturesController < ApplicationController
 	end
 	
 	def verify_admin
-		current_user.try(:admin?)
+		unless current_user.admin?
+			flash[:alert] = "Sorry only an admin can perform this feature"
+			redirect_to root_path
+		end
 	end
 end
