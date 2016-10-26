@@ -1,13 +1,6 @@
 class User < ActiveRecord::Base
 	acts_as_voter
 	
-	attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
-	after_update :reprocess_avatar, :if => :cropping?
-	
-	def cropping?
-		!crop_x.blank? && !crop_y.blank? && !crop_h.blank? && !crop_w.blank?
-	end
-	
 	def self.search(query)
 	  return none unless query.present?
 	  query = "%#{query.strip}%"
@@ -20,10 +13,4 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-         
-  private
-  
-  def reprocess_avatar
-  	avatar.recreate_versions!
-  end
 end

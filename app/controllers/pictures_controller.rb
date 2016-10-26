@@ -4,7 +4,7 @@ class PicturesController < ApplicationController
 	
 
 	def index
-		@pictures = Picture.where(featured: true)
+		@pictures = Picture.order(params[:sort]).where(featured: true)
 		@picture = Picture.new
 		
 		gon.img = Picture.where(featured: true).sample.image_url.url
@@ -28,7 +28,11 @@ class PicturesController < ApplicationController
 	end
 
 	def destroy
+		@picture = Picture.find(params[:id])
+		@picture.destroy
 		
+		flash[:notice] = "Picture has been deleted."
+		redirect_to user_path(@picture.user)
 	end
 
 	def license
@@ -67,7 +71,7 @@ class PicturesController < ApplicationController
 	private
 
 	def picture_params
-		params.require(:picture).permit(:user, :image_url)
+		params.require(:picture).permit(:image_url)
 	end
 	
 	def verify_admin

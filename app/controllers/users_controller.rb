@@ -12,7 +12,6 @@ class UsersController < ApplicationController
 		if @user.update(user_params)
 			if params[:user][:avatar].present?
 				flash[:notice] = "User has been updated."
-				render 'crop'
 			else
 				flash[:notice] = "User has been updated."
 				redirect_to @user
