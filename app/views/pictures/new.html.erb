@@ -11,6 +11,7 @@
 	</p>
 	<%= simple_form_for @picture do |f| %>
 		<%= f.input :image_url, label: "Image", as: :file %>
+		<%= f.input :user_id, as: :hidden %>
 
 		<%= f.button :submit, "Submit", class: "btn btn-primary" %>
 	<% end %>

@@ -17,6 +17,12 @@ class PicturesController < ApplicationController
 	def create
 		@picture = Picture.new(picture_params)
 		@picture.user = current_user
+		
+		if params[:picture].blank?
+			flash.now[:alert] = "Picture must be selected."
+			render 'new'
+			return
+		end
 
 		if @picture.save
 			flash[:success] = "Photo has been saved."
@@ -71,7 +77,7 @@ class PicturesController < ApplicationController
 	private
 
 	def picture_params
-		params.require(:picture).permit(:image_url)
+		params.require(:picture).permit(:image_url, :user_id)
 	end
 	
 	def verify_admin
