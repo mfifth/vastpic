@@ -1,12 +1,20 @@
 <div class='imageauthor'>
 	<%= image_tag picture.image_url.url, class: "fullimg" %>
 	<ul class='aboutsection'>
-		<li>Photo by <%= link_to "#{picture.user.first_name} #{picture.user.last_name}", 
-			user_path(picture.user) %> / <%= link_to "Download", root_path %>
-			<% if current_user.try(:admin?) || picture.user == current_user %> /
-				<%= link_to "Delete", picture_path(picture), method: :delete, data: {confirm: "Are you sure you want to delete this photo?"} %>
+		<li> Photo by <%= link_to "#{picture.user.first_name} #{picture.user.last_name}", 
+			user_path(picture.user) %> / 
+			
+			<%= link_to root_path do %>
+				<i class="fa fa-download" aria-hidden="true"></i>
 			<% end %>
-			<% if picture.featured == false %>
+			
+			<% if current_user.try(:admin?) || picture.user == current_user %> /
+				<%= link_to picture_path(picture), method: :delete, data: {confirm: "Are you sure you want to delete this photo?"} do %>
+					<i class="fa fa-trash" aria-hidden="true"></i>
+				<% end %>
+			<% end %>
+			
+			<% if picture.featured == false %> /
 				<% admins_only do %>
 					<%= link_to set_featured_picture_path(picture), method: :patch,
 					data: { confirm: "Are you sure you want to make this photo featured?" } do %>
@@ -14,6 +22,11 @@
 					<% end %>
 				<% end %>
 			<% end %>
+			
+			<%= link_to edit_picture_path(picture) do %> /
+				<i class="fa fa-wrench" aria-hidden="true"></i>
+			<% end %>
+			
 			<span class= "likefunction" id="picture_<%= picture.id %>">
 				<% if user_signed_in? && current_user.voted_for?(picture) %>
 					<%= button_to unlike_picture_path(picture), method: :delete, remote: true, class: "likethisphoto" do %>
@@ -27,6 +40,7 @@
 					<% end %>
 				<% end %>
 			</span>
+			
 		</li>
 	</p>
 </div>

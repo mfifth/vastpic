@@ -13,6 +13,11 @@ class PicturesController < ApplicationController
 	def new
 		@picture = Picture.new
 	end
+	
+	def edit
+		@picture = Picture.find(params[:id])
+		@tags = @picture.get_tags
+	end
 
 	def create
 		@picture = Picture.new(picture_params)
@@ -30,6 +35,17 @@ class PicturesController < ApplicationController
 		else
 			flash.now[:alert] = "Photo was not uploaded."
 			render 'new'
+		end
+	end
+	
+	def update
+		@picture = Picture.find(params[:id])
+		if @picture.update(picture_params)
+			flash[:notice] = "Picture has been updated successfully."
+			redirect_to user_path(@picture.user)
+		else
+			flash.now[:alert] = "Picture was not updated."
+			render 'edit'
 		end
 	end
 
@@ -77,7 +93,7 @@ class PicturesController < ApplicationController
 	private
 
 	def picture_params
-		params.require(:picture).permit(:image_url, :user_id)
+		params.require(:picture).permit(:image_url, :user_id, :tag_names)
 	end
 	
 	def verify_admin

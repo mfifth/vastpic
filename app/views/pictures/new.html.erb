@@ -9,9 +9,11 @@
 
 		The photo must be your own original content.
 	</p>
+	
 	<%= simple_form_for @picture do |f| %>
 		<%= f.input :image_url, label: "Image", as: :file %>
 		<%= f.input :user_id, as: :hidden %>
+		<%= f.input :tag_names, placeholder: "Ex. Vintage, Art, Filter, etc" %>
 
 		<%= f.button :submit, "Submit", class: "btn btn-primary" %>
 	<% end %>
