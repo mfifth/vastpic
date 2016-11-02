@@ -4,7 +4,12 @@ class PicturesController < ApplicationController
 	
 
 	def index
-		@pictures = Picture.order(params[:sort]).where(featured: true)
+		if params[:query]
+			@pictures = Picture.search(params[:query]).order(params[:sort]).where(featured: true).uniq
+		else
+			@pictures = Picture.order(params[:sort]).where(featured: true)
+		end
+		
 		@picture = Picture.new
 		
 		gon.img = Picture.where(featured: true).sample.image_url.url

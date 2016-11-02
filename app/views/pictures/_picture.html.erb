@@ -4,13 +4,17 @@
 		<li> Photo by <%= link_to "#{picture.user.first_name} #{picture.user.last_name}", 
 			user_path(picture.user) %> / 
 			
-			<%= link_to root_path do %>
+			<%= link_to picture.image_url.url do %>
 				<i class="fa fa-download" aria-hidden="true"></i>
 			<% end %>
 			
 			<% if current_user.try(:admin?) || picture.user == current_user %> /
 				<%= link_to picture_path(picture), method: :delete, data: {confirm: "Are you sure you want to delete this photo?"} do %>
 					<i class="fa fa-trash" aria-hidden="true"></i>
+				<% end %>
+				
+				<%= link_to edit_picture_path(picture) do %> /
+					<i class="fa fa-wrench" aria-hidden="true"></i>
 				<% end %>
 			<% end %>
 			
@@ -21,10 +25,6 @@
 						<i class="fa fa-check" aria-hidden="true"></i>
 					<% end %>
 				<% end %>
-			<% end %>
-			
-			<%= link_to edit_picture_path(picture) do %> /
-				<i class="fa fa-wrench" aria-hidden="true"></i>
 			<% end %>
 			
 			<span class= "likefunction" id="picture_<%= picture.id %>">

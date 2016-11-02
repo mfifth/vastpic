@@ -20,6 +20,14 @@
 		</button>
 	</li>
 </ul>
+
+<div class='searchbar'>
+	<%= form_tag root_path, method: :get, class: "tagsearch" do %>
+		<%= text_field_tag :query, params[:query], placeholder: "Vintage, Mountain, Water, etc" %>
+		
+		<%= submit_tag "Search", name: nil, class: "btn btn-default" %>
+	<% end %>
+</div>
 	
 <div class='photo_section single'>
 	<% @pictures.each do |picture| %>
