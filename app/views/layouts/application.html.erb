@@ -15,24 +15,38 @@
 	</div>
 </div>
 
-<div class='navbar'>
-	<ul class='nav navbar-nav'>
-		<li><%= link_to 'Home', root_path %></li>
-		<li><%= link_to "Submit", new_picture_path(@picture) %></li>
-		<li><%= link_to "License", license_path %></li>
-	</ul>
-	<div class='navbar-right'>
-		<ul class='nav navbar-nav'>
-			<% if user_signed_in? %>
-				<li class='welcomemsg'><%= link_to "Welcome #{current_user.first_name} #{current_user.last_name}", user_path(current_user)%></li>
-				<li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-			<% else %>
-				<li><%= link_to "Log in", new_user_session_path %></li>
-				<li><%= link_to "Sign up", new_user_registration_path %></li>
-			<% end %>
-		</ul>
-	</div>
-</div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "Home", root_path, class: "navbar-brand" %>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Submit", new_picture_path(@picture) %></li>
+        <li><%= link_to "License", license_path %></li>
+        <% admins_only do %>
+          <li><%= link_to "Admin", admin_root_path %></li>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      	<% if user_signed_in? %>
+      		<li><%= link_to image_tag(current_user.avatar.thumb.url), user_path(current_user), class: "thumb" %></li>
+      		<li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+      	<% else %>
+      		<li><%= link_to "Log in", new_user_session_path %></li>
+      		<li><%= link_to "Sign up", new_user_registration_path %></li>
+      	<% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <div class='container'>
    <% flash.each do |key, message| %>

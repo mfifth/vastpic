@@ -1,0 +1,12 @@
+<div class='editpage'>
+	<h1>Edit Picture </h1>
+
+	<%= image_tag @picture.image_url.url %>
+	
+	<%= simple_form_for @picture do |f| %>
+		<%= f.input :tag_names, input_html: { value: @tags } %>
+		
+		<%= f.button :submit %>
+	<% end %>
+	
+</div>

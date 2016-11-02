@@ -1,0 +1,27 @@
+<div class='heading'>
+	<h1>Welcome to the Admin tab!</h1>
+	
+	<p>Okay lets keep this simple. If you want to lookup a user you can search by email, name, or username.
+		 From there you can delete an account or edit it. If you choose to edit it you can change their info or
+		 delete pictures they uploaded if you'd like. You can also mark the pictures as featured if you would 
+		 like them to be on the front page.
+	</p>
+	
+	<%= simple_form_for admin_users_path, method: :get do |f| %>
+		<%= f.text_field :query, name: 'query', placeholder: params[:query] %>
+		
+		<%= f.button :submit, "Search", name: nil %>
+	<% end %>
+	
+	<div class='search_results'>
+		<ul>
+			<% if @users.present? %>
+				<% @users.each do |user| %>
+					<li class='userinfo'><%= link_to "#{user.first_name} - #{user.email}", user_path(user) %> 
+						<%= link_to "Delete User", admin_user_path(user), class: "btn btn-danger" %>
+					</li>
+				<% end %>
+			<% end %>
+		</ul>
+	</div>
+</div>

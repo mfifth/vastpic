@@ -1,0 +1,12 @@
+<div class='imgcrop'>
+	<h1>Please crop your avatar</h1>
+	<%= image_tag @user.avatar.url, id: 'cropbox' %>
+
+	<%= simple_form_for @user, class: "cropform" do |f| %>
+		<% %w[ x y w h].each do |attribute| %>
+			<%= f.input "crop_#{attribute}", as: :hidden, id: 'attribute' %>
+		<% end %>
+		
+		<%= f.button :submit %>
+	<% end %>
+</div>
