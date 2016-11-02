@@ -1,0 +1,4 @@
+<%= button_to like_picture_path(@picture), method: :put, remote: true, class: "likethisphoto" do %>
+	<span class='likescount'><%= @picture.get_likes.count %></span>
+	<i class="fa fa-heart-o" aria-hidden="true"></i>
+<% end %>

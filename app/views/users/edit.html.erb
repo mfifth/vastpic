@@ -1,0 +1,16 @@
+<div class='edit_form'>
+	<h1>Edit Profile</h1>
+	
+	<%= simple_form_for(@user) do |f| %>
+		<%= f.input :username %>
+		<%= f.input :first_name %>
+		<%= f.input :last_name %>
+		<%= f.input :location %>
+		<%= f.input :email %>
+		
+		<%= f.input :avatar, as: :file %>
+		<%= f.input :about %>
+		
+		<%= f.button :submit, "Update Account" %>
+	<% end %>
+</div>

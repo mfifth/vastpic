@@ -1,6 +1,6 @@
 <div class='profile-header'>
 	<ul>
-		<li><%= image_tag @user.avatar.url %>
+		<li><%= image_tag @user.avatar.medium.url, class: "avatarimg" %>
 		<li><%= "#{@user.first_name} #{@user.last_name}" %></li>
 		<li><%= @user.location %></li>
 		<li><%= @user.about %></li>
@@ -16,8 +16,8 @@
 			Sort By <i class="fa fa-sort-desc" aria-hidden="true"></i>
 		</button>
 		<div id='myDropdown' class='dropdown-content'>
-			<%= link_to "Latest", :sort => "created_at asc" %>
-			<%= link_to "Oldest", :sort => "created_at desc" %>
+			<%= link_to "Oldest", :sort => "created_at asc" %>
+			<%= link_to "Latest", :sort => "created_at desc" %>
 		</div>
 	</li>
 	<li class='sizetoggle'>
@@ -32,6 +32,6 @@
 
 <div class='photo_section single'>
 	<% @pictures.each do |picture| %>
-		<%= image_tag picture.image_url.url, class: "fullimg" %>
+		<%= render partial: 'picture', locals: {picture: picture} %>
 	<% end %>
 </div>

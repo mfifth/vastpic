@@ -13,6 +13,14 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'devise'
 
+gem 'jcrop-rails-v2'
+
+gem 'figaro'
+
+gem 'mini_magick'
+
+gem 'rmagick'
+
 gem 'autoprefixer-rails'
 
 gem 'font-awesome-rails'
@@ -20,6 +28,10 @@ gem 'font-awesome-rails'
 gem 'bootstrap-sass'
 
 gem 'simple_form'
+
+gem 'acts_as_votable'
+
+# gem 'carrierwave-crop'
 
 gem 'pry'
 
@@ -29,9 +41,9 @@ gem 'gon'
 
 gem 'dropzonejs-rails'
 
-gem 'rails_12factor', group: :production
+# gem 'rails_12factor', group: :production
 
-gem 'capistrano'
+# gem 'capistrano'
 
 gem 'aws-sdk'
 

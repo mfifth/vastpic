@@ -1,28 +1,5 @@
-== README
+== Vastpic Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Hi there! Thanks for checking out my project. This is a image hosting service for general public to upload images
+that can be used anywhere under the Fair Use Agreement. It was built with PostgreSQL, Rails, Bootstrap, Carrierwave,
+AWS-SDK, & Devise.

@@ -6,10 +6,10 @@
 		<button class='dropbtn'>
 			Sort By <i class="fa fa-sort-desc" aria-hidden="true"></i>
 		</button>
-		<div id='myDropdown' class='dropdown-content'>
-			<%= link_to "Latest", :sort => "created_at asc" %>
-			<%= link_to "Oldest", :sort => "created_at desc" %>
-		</div>
+			<div id='myDropdown' class='dropdown-content'>
+				<%= link_to "Oldest", :sort => "created_at asc" %>
+				<%= link_to "Latest", :sort => "created_at desc" %>
+			</div>
 	</li>
 	<li class='sizetoggle'>
 		<button type='button' class='single-img'>
@@ -20,9 +20,17 @@
 		</button>
 	</li>
 </ul>
+
+<div class='searchbar'>
+	<%= form_tag root_path, method: :get, class: "tagsearch" do %>
+		<%= text_field_tag :query, params[:query], placeholder: "Vintage, Mountain, Water, etc" %>
+		
+		<%= submit_tag "Search", name: nil, class: "btn btn-default" %>
+	<% end %>
+</div>
 	
 <div class='photo_section single'>
 	<% @pictures.each do |picture| %>
-		<%= image_tag picture.image_url.url, class: "fullimg" %>
+		<%= render partial: 'picture', locals: {picture: picture} %>
 	<% end %>
 </div>
