@@ -5,5 +5,3 @@ end
 unless User.exists?(email: "user@vastpic.com")
 	User.create!(email: "user@vastpic.com", password: "password")
 end
-
-Picture.create!(image_url: File.open('/home/matt/Pictures/img_photos/vastpic/AroundTheBend.jpg'))

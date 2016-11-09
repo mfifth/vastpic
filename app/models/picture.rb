@@ -26,4 +26,12 @@ class Picture < ActiveRecord::Base
 	  query = "#{query.strip.downcase}"
 	  joins(:tags).where(tags: {name: query})
 	end
+	
+	def self.get_random_picture
+		if Picture.all.empty?
+			return ""
+		else
+			Picture.where(featured: true).sample.image_url.url
+		end
+	end
 end

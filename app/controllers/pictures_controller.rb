@@ -12,7 +12,7 @@ class PicturesController < ApplicationController
 		
 		@picture = Picture.new
 		
-		gon.img = Picture.where(featured: true).sample.image_url.url
+		gon.img = Picture.get_random_picture
 	end
 
 	def new
