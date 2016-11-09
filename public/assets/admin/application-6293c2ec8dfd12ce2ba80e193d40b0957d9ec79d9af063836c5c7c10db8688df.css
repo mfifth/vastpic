@@ -1,0 +1,22 @@
+/* line 1, /home/matt/RubyProjects/vastpic/app/assets/stylesheets/admin/application.scss */
+.heading {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+/* line 7, /home/matt/RubyProjects/vastpic/app/assets/stylesheets/admin/application.scss */
+.heading p {
+  width: 80%;
+}
+
+/* line 11, /home/matt/RubyProjects/vastpic/app/assets/stylesheets/admin/application.scss */
+.search_results {
+  margin-top: 30px;
+}
+
+/* line 15, /home/matt/RubyProjects/vastpic/app/assets/stylesheets/admin/application.scss */
+.search_results ul {
+  padding: 0px;
+  list-style: none;
+}
