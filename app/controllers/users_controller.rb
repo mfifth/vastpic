@@ -10,12 +10,8 @@ class UsersController < ApplicationController
 	
 	def update
 		if @user.update(user_params)
-			if params[:user][:avatar].present?
-				flash[:notice] = "User has been updated."
-			else
-				flash[:notice] = "User has been updated."
-				redirect_to @user
-			end
+			flash[:notice] = "User has been updated."
+			redirect_to user_path(@user)
 		else
 			flash.now[:alert] = "User has not been updated."
 			render 'edit'
